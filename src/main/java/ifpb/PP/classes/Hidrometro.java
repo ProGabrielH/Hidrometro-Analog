@@ -20,9 +20,9 @@ public class Hidrometro {
     }
 
     public void mostrarDisplayAnalogico(){
-        int inteiro = (int) consumoTotal;
-        int decimal = ((int) consumoTotal - inteiro);
-        System.out.println("[" + inteiro + "," + decimal + "]");
+        int m3 = ((int) consumoTotal / 1000);
+        int resto = ((int) consumoTotal % 1000);
+        System.out.println("[ " + m3 + " | " + resto + " ] m^3");
     }
 
     public void mostrarHistorico(){
