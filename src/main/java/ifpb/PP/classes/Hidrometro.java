@@ -1,37 +1,23 @@
 package ifpb.PP.classes;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Hidrometro {
-    private String numeroSerie;
-    private double consumoTotal;
-    private List<Consumo> historico;
+    private double leitura;
+    private Consumo consumo;
 
-    public Hidrometro(String numeroSerie){
-        this.numeroSerie = numeroSerie;
-        this.consumoTotal = 0;
-        this.historico = new ArrayList<>();
+    public Hidrometro(Consumo consumo) {
+        this.leitura = 0.0;
+        this.consumo = consumo;
     }
 
-    public void registrarConsumo(double litros){
-        consumoTotal += litros;
-        historico.add(new Consumo(litros));
+    public void registrar() {
+        leitura += consumo.gerar();
     }
 
-    public void mostrarDisplayAnalogico(){
-        int m3 = ((int) consumoTotal / 1000);
-        int resto = ((int) consumoTotal % 1000);
-        System.out.println("[ " + m3 + " | " + resto + " ] m^3");
+    public double getLeitura() {
+        return leitura;
     }
 
-    public void mostrarHistorico(){
-        for (Consumo c : historico) {
-            System.out.println(c.getLitros() + " L em " + c.getDataHora());
-        }
-    }
-
-    public double getConsumoTotal() {
-        return consumoTotal;
+    public void resetar() {
+        leitura = 0.0;
     }
 }

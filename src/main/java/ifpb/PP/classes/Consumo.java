@@ -1,22 +1,18 @@
 package ifpb.PP.classes;
 
-import java.time.LocalDateTime;
+import java.util.Random;
 
 public class Consumo {
+    private double taxa; // taxa máxima
+    private Random random;
 
-    private double litros;
-    private LocalDateTime dataHora;
-
-    public Consumo(double litros){
-        this.litros = litros;
-        this.dataHora = LocalDateTime.now();
+    public Consumo(double taxa) {
+        this.taxa = taxa;
+        this.random = new Random();
     }
 
-    public double getLitros() {
-        return litros;
-    }
-
-    public LocalDateTime getDataHora() {
-        return dataHora;
+    public double gerar() {
+        return random.nextDouble() * taxa;
     }
 }
+
